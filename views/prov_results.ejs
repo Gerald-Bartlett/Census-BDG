@@ -1,0 +1,30 @@
+<html lang="en">
+  <%- include('./partials/header.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    
+     <h1>PG Province Results</h1><br />
+      <% if (results.length > 0) { %> <% results.forEach(census => { %>
+        <p class="boxed-results">Family: 
+          <span>Parent 1:</span> <%= census.family_name%>, <%= census.parent1_first_name%>&nbsp&nbsp--&nbsp&nbsp <span>DOB:</span> <%=census.parent1_date_of_birth%>&nbsp&nbsp--&nbsp&nbsp <span>Gender:</span> <%= census.parent1_gender%> <br/>
+          <span>Parent 2:</span> <%= census.family_name%>, <%=census.parent2_first_name%>&nbsp&nbsp--&nbsp&nbsp<span> DOB:</span> <%= census.parent2_date_of_birth%>&nbsp&nbsp--&nbsp&nbsp<span> Gender:</span> <%= census.parent2_gender%><br/>
+        <span>Address:</span> <%= census.address%>, <b><%= census.province%></b>&nbsp&nbsp--&nbsp&nbsp <span>Household ID:</span> <%= census.household_id%> <br/>
+      <span> Phone Number:</span> <%= census.phone_number%>&nbsp&nbsp--&nbsp&nbsp
+    <span>Census Year:</span> <%= census.census_year%> <br/>
+          <span>Child Name:</span> <%= census.child_name %>&nbsp&nbsp--&nbsp&nbsp 
+        <span>DOB:</span> <%=census.child_date_of_birth %>&nbsp&nbsp--&nbsp&nbsp 
+      <span> Gender:</span> <%= census.child_gender %> <br/>
+          <% %> 
+        <span>Household Income:</span> <%= census.household_income%>
+        </p>
+        <br />
+        <% }) %> <% } %>
+      <br />
+      <button>
+        <a class="example" href="/prov_search">&#8592 Back</a></button
+      ><br />
+      <br />
+   
+  </body>
+  <%- include('./partials/footer.ejs') %>
+</html>

@@ -1,0 +1,33 @@
+<html lang="en">
+  <%- include('./partials/header.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="search content">
+      
+     <h1>Mongo Database Family Name Results</h1> <br />
+      <% if (results.length > 0) { %> <% results.forEach(census => { %>
+      <p class="boxed-results-mg">
+        <span>Parent 1:</span> <b><%= census.family_name%>,</b> <%= census.parent1_first_name%>&nbsp&nbsp--&nbsp&nbsp <span>DOB:</span> <%=census.parent1.date_of_birth%>&nbsp&nbsp--&nbsp&nbsp <span>Gender:</span> <%= census.parent1.gender%> <br/>
+        <span>Parent 2:</span> <b><%= census.family_name%>,</b> <%=census.parent2_first_name%>&nbsp&nbsp--&nbsp&nbsp<span> DOB:</span> <%= census.parent2.date_of_birth%>&nbsp&nbsp--&nbsp&nbsp<span> Gender:</span> <%= census.parent2.gender%><br/>
+      <span>Address:</span> <%= census.address%>, <%= census.province%>&nbsp&nbsp--&nbsp&nbsp <span>Household ID:</span> <%= census.household_id%> <br/>
+    <span> Phone Number:</span> <%= census.phone_number%>&nbsp&nbsp--&nbsp&nbsp
+  <span>Census Year:</span> <%= census.census_year%> <br/>
+        <% for(var i=0; i < census.child.length; i++) { %> 
+        <span>Child Name:</span> <%= census.child[i].name %>&nbsp&nbsp--&nbsp&nbsp 
+      <span>DOB:</span> <%=census.child[i].date_of_birth %>&nbsp&nbsp--&nbsp&nbsp 
+    <span> Gender:</span> <%= census.child[i].gender %> <br/>
+        <% } %> 
+      <span>Household Income:</span> <%= census.household_income%>
+      </p>
+      <br />
+      <% }) %> <% } %>
+
+      <br />
+      <button><a class="example" href="/mongo_fam">&#8592 Back</a></button
+      ><br />
+      <br />
+    </div>
+  </body>
+</html>
+
+<%- include('./partials/footer.ejs') %>
